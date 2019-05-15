@@ -1,70 +1,44 @@
 import java.util.Vector;
 
 public class Client {
-	private String nif;
-	private String nom;
-	private String telefon;
-	private Vector<Lloguer> Lloguer;
-	
-	//Lamar a las funciones 
-	//Constructores
-	public Client(String nif,String nom,String telefon) {
-		this.nif=nif;
-		this.nom=nom;
-		this.telefon=telefon;
-		this.Lloguer=new Vector<Lloguer>();
-		
-	}
+    private String nif;
+    private String nom;
+    private String telefon;
+    private Vector<Lloguer> lloguers;
+    //Realizamos el constructor de la clase
+    public Client(String nif, String nom, String telefon) {
+        this.nif = nif;
+        this.nom = nom;
+        this.telefon = telefon;
+        this.lloguers = new Vector<Lloguer>();
+    }
 
-	//Los get y set 
-	public String getNif() {
-		return nif;
-	}
+    public String getNif()     { return nif;     }
+    public String getNom()     { return nom;     }
+    public String getTelefon() { return telefon; }
 
-	public void setNif(String nif) {
-		this.nif = nif;
-	}
+    public void setNif(String nif) { this.nif = nif; }
+    public void setNom(String nom) { this.nom = nom; }
+    public void setTelefon(String telefon) {
+        this.telefon = telefon;
+    }
+    public void afegeix(Lloguer lloguer) {
+        if (! lloguers.contains(lloguer) ) {
+            lloguers.add(lloguer);
+        }
+    }
+    public void elimina(Lloguer lloguer) {
+        if (lloguers.contains(lloguer) ) {
+            lloguers.remove(lloguer);
+        }
+    }
+    public boolean conte(Lloguer lloguer) {
+        return lloguers.contains(lloguer);
+    }
 
-	public String getNom() {
-		return nom;
-	}
-
-	public void setNom(String nom) {
-		this.nom = nom;
-	}
-
-	public String getTelefon() {
-		return telefon;
-	}
-
-	public void setTelefon(String telefon) {
-		this.telefon = telefon;
-	}
-	
-	public Vector<Lloguer> getLloguer() {
-		return Lloguer;
-	}
-
-	public void setLloguer(Vector<Lloguer> lloguer) {
-		Lloguer = lloguer;
-	}
-
-	//---------------------------------------
-	public void afegeix() {
-		
-	}
-	
-	public void eliminar() {
-		
-	}
-	public void conte() {
-		
-	}
-	
-	public void inform() {
-		
-	}
-	
-	
-	
+    public String informe() {
+        // XXX: de moment buit
+        return null;
+    }
+    
 }
