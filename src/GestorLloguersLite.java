@@ -4,7 +4,7 @@ import java.util.Date;
 
 public class GestorLloguersLite {
 	public static void main(String[] args) throws ParseException {
-		//Tenemos un cliente
+		//Tenemos un clientes
 		Client cliente1= new Client("11111A", "Ariel", "+346666666");
 		//Creamos los 3 tipos de vehiculo que existen
 		Vehicle vehivulo1Baico= new Vehicle("Un model", "Una marca", Vehicle.Basic);
@@ -24,11 +24,15 @@ public class GestorLloguersLite {
 		Lloguer lloger1M= new Lloguer(fecha2, 2, vehivulo2medio);
 		Lloguer lloger1A= new Lloguer(fecha3, 2, vehivulo3alto);
 		
-		//Añadimos los clientes a la base de datos 
+		//Aï¿½adimos los clientes a la base de datos 
 		cliente1.afegeix(lloger1B);
 		cliente1.afegeix(lloger1M);
 		cliente1.afegeix(lloger1A);
-		System.out.println(cliente1.informe());
+		
+		System.out.println(dateFormat.format(lloger1B.getData()));
+		System.out.println(dateFormat.format(lloger1M.getData()));
+		System.out.println(dateFormat.format(lloger1A.getData()));
+		System.out.println(cliente1.toString());
 		
 	}
 }

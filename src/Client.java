@@ -4,7 +4,7 @@ public class Client {
     private String nif;
     private String nom;
     private String telefon;
-    private Vector<Lloguer> lloguers;
+    private static Vector<Lloguer> lloguers;
     //Realizamos el constructor de la clase
     public Client(String nif, String nom, String telefon) {
         this.nif = nif;
@@ -22,7 +22,7 @@ public class Client {
     public void setTelefon(String telefon) {
         this.telefon = telefon;
     }
-    public void afegeix(Lloguer lloguer) {
+    public static void afegeix(Lloguer lloguer) {
         if (! lloguers.contains(lloguer) ) {
             lloguers.add(lloguer);
         }
@@ -45,19 +45,19 @@ public class Client {
         for (Lloguer lloguer: lloguers) {
             double quantitat = 0;
             switch (lloguer.getVehicle().getCategoria()) {
-                case Vehicle.Basic:
-                    quantitat += 3;
-                    if (lloguer.getDies() > 3) {
-                        quantitat += (lloguer.getDies() - 3) * 1.5;
-                    }
-                    break;
-                case Vehicle.GENERAL:
-                    quantitat += 4;
-                    if (lloguer.getDies() > 2) {
-                        quantitat += (lloguer.getDies() - 2) * 2.5;
-                    }
-                    break;
-                case Vehicle.LUXE:
+            case Vehicle.Basic:
+                quantitat += 3;
+                if (lloguer.getDies() > 3) {
+                    quantitat += (lloguer.getDies() - 3) * 1.5;
+                }
+                break;
+            case Vehicle.Mitja:
+                quantitat += 4;
+                if (lloguer.getDies() > 2) {
+                    quantitat += (lloguer.getDies() - 2) * 2.5;
+                }
+                break;
+            case Vehicle.Alt:
                     quantitat += lloguer.getDies() * 6;
                     break;
             }
@@ -85,5 +85,16 @@ public class Client {
             "Punts guanyats: " + bonificacions + "\n";
         return resultat;
     }
+    //Mostramos los datos de la venta
+    public String mostrarDatos() {
+		String infor = null;
+		for (Lloguer lloguer: lloguers) {
+			infor = "Client:" +getNom()+"\n"+
+					getNif()+"\n"+
+					getTelefon()+"\n"+
+					"1. Vehicle: "+"\n"+lloguer.getVehicle().getMarca();
+		}
+		return infor;
+	}
     
 }

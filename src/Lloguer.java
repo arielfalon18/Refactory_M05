@@ -1,14 +1,16 @@
+import java.text.DateFormat;
 import java.util.Date;
+import java.util.Vector;
 
 public class Lloguer {
 	private Date  data;
 	private int dies;
-	private Vehicle vehicle;
+	private Vector<Vehicle> vehicles;
 	Lloguer(Date data, int dies , Vehicle vehicle) {
 		super();
 		this.data = data;
 		this.dies = dies;
-		this.vehicle=vehicle;
+		this.vehicles = new Vector<Vehicle>();
 	}
 	public Date getData() {
 		return data;
@@ -23,10 +25,11 @@ public class Lloguer {
 		this.dies = dies;
 	}
 	public Vehicle getVehicle() {
-		return vehicle;
+		return getVehicle();
 	}
+
 	public void setVehicle(Vehicle vehicle) {
-		this.vehicle = vehicle;
+		this.vehicles = vehicles;
 	}
 	
 	
