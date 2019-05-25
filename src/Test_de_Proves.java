@@ -14,15 +14,26 @@ public class Test_de_Proves{
 	private Vehicle alt;
 	private Lloguer lloguer;
 	
+	//Mensaje original
 	private String textOriginal = "Informe de lloguers del client Ariel (26333408H)\n" + 
 			"	nuevo ferrari: 90.0€\n" + 
 			"	terreno 4X4: 495.0€\n" + 
 			"	Nu  Renault: 720.0€\n" + 
 			"Import a pagar: 1305.0€\n" + 
 			"Punts guanyats: 4\n";
+	
+	
+	
+	//Mensaje de genereado por un dia antes 
+	private String textGeneralUnDia = "Informe de lloguers del client Ariel (26333408H)\n" + 
+			"	nuevo ferrari: 90.0€\n" +  
+			"Import a pagar: 90.0€\n" + 
+			"Punts guanyats: 1\n";
+	
+	
 	SimpleDateFormat dateFormat = new SimpleDateFormat("d/M/yyyy");
 
-
+	//Datos 
 	@Before
 	public void setUp() {
 		client = new Client("26333408H", "Ariel", "123456789");
@@ -30,7 +41,23 @@ public class Test_de_Proves{
 		mitja = new Vehicle("4X4", "terreno", Vehicle.Mitja);
 		alt = new Vehicle("Renault", "Nu ", Vehicle.Alt);
 	}
+	
+	
+	//Tienes que poner un dia antes del 4
+	@Test
+	public void testGeneralUnDia() throws ParseException {
+		Date fecha = dateFormat.parse("4/10/2014");
+		lloguer = new Lloguer(fecha, 3, basic);
+		client.afegeix(lloguer);
 
+		System.out.println("textOriginalX abans de l'assert");
+		assertEquals(textGeneralUnDia, client.informe());
+	}
+	
+	
+	
+	
+	//Llamamos al texto original
 	@Test
 	public void testBasic() throws ParseException {
 		Date fecha = dateFormat.parse("2/8/2013");
