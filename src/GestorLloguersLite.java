@@ -4,35 +4,35 @@ import java.util.Date;
 
 public class GestorLloguersLite {
 	public static void main(String[] args) throws ParseException {
-		//Tenemos un clientes
-		Client cliente1= new Client("11111A", "Ariel", "+346666666");
-		//Creamos los 3 tipos de vehiculo que existen
-		Vehicle vehivulo1Baico= new Vehicle("Un model", "Una marca", Vehicle.Basic);
-		Vehicle vehivulo2medio= new Vehicle("ModeloMedio", "MarcaNueva", Vehicle.Mitja);
-		Vehicle vehivulo3alto= new Vehicle("ModeloAlto", "Gmaalta", Vehicle.Alt);
-		//Creamos un los 3 lloguer para cada vehiculo
-		//Para la fecha que estamos creando
+		// creamos un cliente
+		Client client1 = new Client("26333408H", "Ariel", "123456789");
+
+		//creamos los tres vehiculos
+		Vehicle vehicleBasic = new Vehicle("ferrari", "nuevo", Vehicle.Basic);
+		Vehicle vehicleMitja = new Vehicle("4X4", "terreno", Vehicle.Mitja);
+		Vehicle vehicleAlt = new Vehicle("Renault", "Nu", Vehicle.Alt);
+
+		//creamos tres alquileres
 		SimpleDateFormat dateFormat = new SimpleDateFormat("d/M/yyyy");
-		Date fecha = dateFormat.parse("1/8/2013");
-		SimpleDateFormat dateFormat2 = new SimpleDateFormat("d/M/yyyy");
-		Date fecha2 = dateFormat2.parse("2/8/2013");
-		SimpleDateFormat dateFormat3 = new SimpleDateFormat("d/M/yyyy");
-		Date fecha3 = dateFormat3.parse("3/8/2013");
-		//Lloguer lugar1=new Lloguer(fecha, 2, vehivulo1);
-		
-		Lloguer lloger1B= new Lloguer(fecha, 2, vehivulo1Baico);
-		Lloguer lloger1M= new Lloguer(fecha2, 2, vehivulo2medio);
-		Lloguer lloger1A= new Lloguer(fecha3, 2, vehivulo3alto);
-		
-		//A�adimos los clientes a la base de datos 
-		cliente1.afegeix(lloger1B);
-		cliente1.afegeix(lloger1M);
-		cliente1.afegeix(lloger1A);
-		
-		System.out.println(dateFormat.format(lloger1B.getData()));
-		System.out.println(dateFormat.format(lloger1M.getData()));
-		System.out.println(dateFormat.format(lloger1A.getData()));
-		System.out.println(cliente1.toString());
-		
+		Date date = dateFormat.parse("2/8/2013");
+		Lloguer lloguerBasic = new Lloguer(date, 2, vehicleBasic);
+		Client.afegeix(lloguerBasic);
+
+		Date date2 = dateFormat.parse("8/09/2014");
+		Lloguer lloguerMitja = new Lloguer(date2, 7, vehicleMitja);
+		Client.afegeix(lloguerMitja);
+
+		Date date3 = dateFormat.parse("4/10/2014");
+		Lloguer lloguerAlt = new Lloguer(date3, 4, vehicleAlt);
+		Client.afegeix(lloguerAlt);
+
+		//Formato de fecha
+		System.out.println(dateFormat.format(lloguerBasic.getData()));
+		System.out.println(dateFormat.format(lloguerMitja.getData()));
+		System.out.println(dateFormat.format(lloguerAlt.getData()));
+
+		//mostrar datos
+		System.out.println(client1.informe());
+
 	}
 }

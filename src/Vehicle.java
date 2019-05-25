@@ -7,11 +7,8 @@ public class Vehicle {
 	public static final String Basic = "basic";
 	public static final String Mitja = "mitja";
 	public static final String Alt = "alt";
-	public static final String GENERAL = "GENERAL";
-	public static final String LUXE = "LUXE";
 	
-	Vehicle(String model, String marca, String categoria) {
-		super();
+	public Vehicle(String model, String marca, String categoria) {
 		this.model = model;
 		this.marca = marca;
 		this.categoria = categoria;

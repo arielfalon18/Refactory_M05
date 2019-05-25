@@ -7,11 +7,12 @@ public class Client {
     private static Vector<Lloguer> lloguers;
     //Realizamos el constructor de la clase
     public Client(String nif, String nom, String telefon) {
-        this.nif = nif;
-        this.nom = nom;
-        this.telefon = telefon;
-        this.lloguers = new Vector<Lloguer>();
-    }
+		super();
+		this.nif = nif;
+		this.nom = nom;
+		this.telefon = telefon;
+		this.lloguers = new Vector<Lloguer>();
+	}
 
     public String getNif()     { return nif;     }
     public String getNom()     { return nom;     }
@@ -23,15 +24,16 @@ public class Client {
         this.telefon = telefon;
     }
     public static void afegeix(Lloguer lloguer) {
-        if (! lloguers.contains(lloguer) ) {
-            lloguers.add(lloguer);
-        }
+    	if (!lloguers.contains(lloguer)) {
+    		lloguers.add(lloguer);
+    	}
     }
     public void elimina(Lloguer lloguer) {
         if (lloguers.contains(lloguer) ) {
             lloguers.remove(lloguer);
         }
     }
+    
     public boolean conte(Lloguer lloguer) {
         return lloguers.contains(lloguer);
     }
@@ -45,19 +47,19 @@ public class Client {
         for (Lloguer lloguer: lloguers) {
             double quantitat = 0;
             switch (lloguer.getVehicle().getCategoria()) {
-            case Vehicle.Basic:
-                quantitat += 3;
-                if (lloguer.getDies() > 3) {
-                    quantitat += (lloguer.getDies() - 3) * 1.5;
-                }
-                break;
-            case Vehicle.Mitja:
-                quantitat += 4;
-                if (lloguer.getDies() > 2) {
-                    quantitat += (lloguer.getDies() - 2) * 2.5;
-                }
-                break;
-            case Vehicle.Alt:
+                case Vehicle.Basic:
+                    quantitat += 3;
+                    if (lloguer.getDies() > 3) {
+                        quantitat += (lloguer.getDies() - 3) * 1.5;
+                    }
+                    break;
+                case Vehicle.Mitja:
+                    quantitat += 4;
+                    if (lloguer.getDies() > 2) {
+                        quantitat += (lloguer.getDies() - 2) * 2.5;
+                    }
+                    break;
+                case Vehicle.Alt:
                     quantitat += lloguer.getDies() * 6;
                     break;
             }
@@ -66,7 +68,7 @@ public class Client {
             bonificacions ++;
 
             // afegeix bonificació per dos dies de lloguer de Luxe
-            if (lloguer.getVehicle().getCategoria() == Vehicle.LUXE &&
+            if (lloguer.getVehicle().getCategoria() == Vehicle.Alt &&
                     lloguer.getDies()>1 ) {
                 bonificacions ++;
             }
@@ -83,8 +85,13 @@ public class Client {
         // afegeix informació final
         resultat += "Import a pagar: " + total + "€\n" +
             "Punts guanyats: " + bonificacions + "\n";
+        System.out.println("XXX informe retorna " + resultat);
         return resultat;
+    
+        		 
     }
+
+
     //Mostramos los datos de la venta
     public String mostrarDatos() {
 		String infor = null;
