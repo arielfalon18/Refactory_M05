@@ -1,3 +1,7 @@
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.Iterator;
 import java.util.Vector;
 
@@ -71,18 +75,39 @@ public class Client {
     
         		 
     }
-    //Ejercicio 13 ya no lo necesitamos
-    //Bonificacion de venta
-    /*public int bonificaciondelloguer(Lloguer lloguer) {
-    	//creamos la variable de 0 y contador que sume
-		int bonificacions = 0;
-		bonificacions++;
-		//comprobamos si la categoria del vehicle es alto  y si sus dias son superior a un dia
-		if (lloguer.getVehicle().getCategoria() == Vehicle.Alt && lloguer.getDies() > 1) {
-			bonificacions++;
-		}
-		return bonificacions;
-	}*/
+    
+    public String informeHtml() {
+    	String resultat = "<h1>Informe de lloguers</h1>" +
+                "<p>Informe de lloguers del client <em>"+getNom() +"</em>"+
+                " (<strong>" + getNif() + "</strong>)</p>";
+    			resultat += "<table><tr><td>"
+        		+ "<strong>Marca</strong></td><td><strong>Model</strong>"
+        		+ "</td><td><strong>Import</strong></td></tr>";
+            for (Lloguer lloguer: lloguers) {
+            	
+                resultat += 
+                	
+                    "<tr><td>"+lloguer.getVehicle().getMarca()+"</td>" +
+                    "<td>"+
+                    lloguer.getVehicle().getModel()+"</td>" + "<td>" +
+                    (lloguer.precio_de_Vehiculo() * EUROS_PER_UNITAT_DE_COST) + "€" + "</td></tr>\n";
+            }
+
+            // afegeix informació final
+            resultat += "</table><p>Import a pagar: <em>" + importTotal() + "€</em></p>\n" +
+                "<p>Punts guanyats:<em>" + bonificacionsTotals() + "</em></p>\n";
+            System.out.println("XXX informe retorna " + resultat);
+            File f= new File("test.html");
+            try {
+				BufferedWriter bw = new BufferedWriter(new FileWriter(f));
+				bw.write(resultat);
+				bw.close();
+			} catch (IOException e) {
+				// TODO: handle exception
+				e.printStackTrace();
+			}
+            return resultat;
+    }
     
     //Ejercicio16 creamos la funcion importTotal
     public double importTotal() {

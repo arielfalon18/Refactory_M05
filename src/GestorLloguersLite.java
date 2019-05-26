@@ -32,7 +32,10 @@ public class GestorLloguersLite {
 		System.out.println(dateFormat.format(lloguerAlt.getData()));
 
 		//mostrar datos
+		
 		System.out.println(client1.informe());
+		//Nose si pedias esto pero bueno lo hice haci el ejerccio 21
+		System.out.println(client1.informeHtml());
 
 	}
 }
