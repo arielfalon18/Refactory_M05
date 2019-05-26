@@ -53,5 +53,15 @@ public class Lloguer {
 		}
 		return quantitat;
 	}
+	public int bonificaciondelloguer() {
+    	//creamos la variable de 0 y contador que sume
+		int bonificacions = 0;
+		bonificacions++;
+		//comprobamos si la categoria del vehicle es alto  y si sus dias son superior a un dia
+		if (getVehicle().getCategoria() == Vehicle.Alt && getDies() > 1) {
+			bonificacions++;
+		}
+		return bonificacions;
+	}
 	
 }

@@ -49,7 +49,8 @@ public class Client {
             // afegeix lloguers freqüents
         	//ya no lo necesitamos ya que tenemos una funcion que lo hace
             //bonificacions ++;
-        	bonificaciondelloguer(lloguer);
+        	//bonificaciondelloguer(lloguer);
+        	bonificacions+= lloguer.bonificaciondelloguer();
 
             // afegeix bonificació per dos dies de lloguer de Luxe
             if (lloguer.getVehicle().getCategoria() == Vehicle.Alt &&
@@ -74,9 +75,9 @@ public class Client {
     
         		 
     }
-    
+    //Ejercicio 13 ya no lo necesitamos
     //Bonificacion de venta
-    public int bonificaciondelloguer(Lloguer lloguer) {
+    /*public int bonificaciondelloguer(Lloguer lloguer) {
     	//creamos la variable de 0 y contador que sume
 		int bonificacions = 0;
 		bonificacions++;
@@ -85,7 +86,7 @@ public class Client {
 			bonificacions++;
 		}
 		return bonificacions;
-	}
+	}*/
    
 
 
