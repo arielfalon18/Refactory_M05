@@ -40,7 +40,7 @@ public class Client {
     }
 
     public String informe() {
-        int bonificacions = 0;
+        
         String resultat = "Informe de lloguers del client " +
             getNom() +
             " (" + getNif() + ")\n";
@@ -50,13 +50,9 @@ public class Client {
         	//ya no lo necesitamos ya que tenemos una funcion que lo hace
             //bonificacions ++;
         	//bonificaciondelloguer(lloguer);
-        	bonificacions+= lloguer.bonificaciondelloguer();
+        	//bonificacions+= lloguer.bonificaciondelloguer();
 
-            // afegeix bonificació per dos dies de lloguer de Luxe
-            if (lloguer.getVehicle().getCategoria() == Vehicle.Alt &&
-                    lloguer.getDies()>1 ) {
-                bonificacions ++;
-            }
+           
 
             // composa els resultats d'aquest lloguer
             resultat += "\t" +
@@ -68,7 +64,7 @@ public class Client {
 
         // afegeix informació final
         resultat += "Import a pagar: " + importTotal() + "€\n" +
-            "Punts guanyats: " + bonificacions + "\n";
+            "Punts guanyats: " + bonificacionsTotals() + "\n";
         System.out.println("XXX informe retorna " + resultat);
         return resultat;
     
@@ -95,6 +91,15 @@ public class Client {
     	}
     	return total;
     }
+    //Ejercicio 17 crear funcico bonificacionsTotals()
+    public int bonificacionsTotals() {
+		int bonificacions = 0;
+		for(Lloguer lloguer: lloguers) {
+			bonificacions += lloguer.bonificaciondelloguer();
+		}
+
+		return bonificacions;
+	}
    
 
 

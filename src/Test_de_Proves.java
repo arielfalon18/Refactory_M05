@@ -20,7 +20,7 @@ public class Test_de_Proves{
 			"	terreno 4X4: 495.0€\n" + 
 			"	Nu  Renault: 720.0€\n" + 
 			"Import a pagar: 1305.0€\n" + 
-			"Punts guanyats: 5\n";
+			"Punts guanyats: 4\n";
 	
 	
 	
