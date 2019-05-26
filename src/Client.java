@@ -46,9 +46,10 @@ public class Client {
             " (" + getNif() + ")\n";
         for (Lloguer lloguer: lloguers) {
         	
-
             // afegeix lloguers freqüents
-            bonificacions ++;
+        	//ya no lo necesitamos ya que tenemos una funcion que lo hace
+            //bonificacions ++;
+        	bonificaciondelloguer(lloguer);
 
             // afegeix bonificació per dos dies de lloguer de Luxe
             if (lloguer.getVehicle().getCategoria() == Vehicle.Alt &&
@@ -73,6 +74,18 @@ public class Client {
     
         		 
     }
+    
+    //Bonificacion de venta
+    public int bonificaciondelloguer(Lloguer lloguer) {
+    	//creamos la variable de 0 y contador que sume
+		int bonificacions = 0;
+		bonificacions++;
+		//comprobamos si la categoria del vehicle es alto  y si sus dias son superior a un dia
+		if (lloguer.getVehicle().getCategoria() == Vehicle.Alt && lloguer.getDies() > 1) {
+			bonificacions++;
+		}
+		return bonificacions;
+	}
    
 
 
