@@ -75,7 +75,7 @@ public class Client {
     
         		 
     }
-    
+    //HTML ejercicio 21
     public String informeHtml() {
     	String resultat = "<h1>Informe de lloguers</h1>" +
                 "<p>Informe de lloguers del client <em>"+getNom() +"</em>"+
@@ -127,18 +127,4 @@ public class Client {
 		return bonificacions;
 	}
    
-
-
-    //Mostramos los datos de la venta
-    public String mostrarDatos() {
-		String infor = null;
-		for (Lloguer lloguer: lloguers) {
-			infor = "Client:" +getNom()+"\n"+
-					getNif()+"\n"+
-					getTelefon()+"\n"+
-					"1. Vehicle: "+"\n"+lloguer.getVehicle().getMarca();
-		}
-		return infor;
-	}
-    
 }
