@@ -39,26 +39,26 @@ public class Lloguer {
 		this.vehicle = vehicle;
 	}
 	
-	public double quantitat() {
-		double quantitat = 0;
+	public double precio_de_Vehiculo() {
+		double precio = 0;
 		switch (getVehicle().getCategoria()) {
 		case Vehicle.Basic:
-			quantitat += cantidad_por_basic;
+			precio += cantidad_por_basic;
 			if (getDies() > dias_iniciados) {
-				quantitat += (getDies() - cantidad_por_basic) * euro_por_dias;
+				precio += (getDies() - cantidad_por_basic) * euro_por_dias;
 			}
 			break;
 		case Vehicle.Mitja:
-			quantitat += cantidad_por_mitja;
+			precio += cantidad_por_mitja;
 			if (getDies() > dias_iniciados_mitja) {
-				quantitat += (getDies() - dias_iniciados_mitja) * euro_por_dias_mitja;
+				precio += (getDies() - dias_iniciados_mitja) * euro_por_dias_mitja;
 			}
 			break;
 		case Vehicle.Alt:
-			quantitat += getDies() * euro_por_dias_alt;
+			precio += getDies() * euro_por_dias_alt;
 			break;
 		}
-		return quantitat;
+		return precio;
 	}
 	public int bonificaciondelloguer() {
     	//creamos la variable de 0 y contador que sume
